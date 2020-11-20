@@ -1,1 +1,1 @@
-# U.S.-Elections---Currency-Movement
+# U.S.-Elections | Currency-Movement
