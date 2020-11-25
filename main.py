@@ -29,7 +29,7 @@ region_of = region_converter.convert(regions)[1]
 currency_of = region_converter.convert(regions)[0]
 
 buffer_plot = 120
-currency = "CHF"
+currency = "CHF"  
 timespan = 3
 election_year = "2016"
 strike = 0.1

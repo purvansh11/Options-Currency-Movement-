@@ -12,8 +12,8 @@ def trading_plot(buffer_plot,dates,hash_value_dates,region_of,cost,date,currency
 
     for i in range(plot_start_index,plot_end_index+1):
         try:
-            traded_at.append(round((float(cost[dates[i]][region_of[currency]])),10))
-    #         traded_at.append(round(float(cost[dates[i]][region_of[currency]]) - float(cost[date][region_of[currency]]),10))
+            # traded_at.append(round((float(cost[dates[i]][region_of[currency]])),10))
+            traded_at.append(round(float(cost[dates[i]][region_of[currency]]) - float(cost[date][region_of[currency]]),10))
             x_values.append(x_val)
             x_val += 1
         except:
