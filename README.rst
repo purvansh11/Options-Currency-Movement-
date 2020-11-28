@@ -45,7 +45,7 @@ Usage
 5. Enter the Strike in percentage (Eg. 0.9).
 6. Select the expiry period of the deal.
 7. Submit the data. Once this is done, you can analyze the results and Trade options of the Digital Options Strategy.
-
+8. Zoom into the plots or downaload them in .png format
 
 Digital Options Explained
 -------------------------
