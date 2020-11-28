@@ -412,7 +412,7 @@ app.layout = html.Div(
         ),
 
         html.Div([
-            html.Button('Submit', id='submit'),
+            html.Button('Submit', id='submit',style = {'margin-left': '10em'}),
         ]),
 
         dcc.Graph(id='plot'),
