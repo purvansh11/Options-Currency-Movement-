@@ -273,7 +273,7 @@ app.layout = html.Div(
         children = [
             
         html.Div([
-                html.H2("U.S. Elections | Currency Movement Prediction"),
+                html.H2("U.S. Elections | Currency Movement Analysis"),
                 html.Img(src="/assets/icon.png")
             ], 
             className="banner",
