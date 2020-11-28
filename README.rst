@@ -1,15 +1,6 @@
 U.S. Election Analysis
 =======================
 
-.. .. image:: https://img.shields.io/travis/constverum/Quantdom.svg?style=flat-square
-..     :target: https://travis-ci.org/constverum/Quantdom
-.. .. image:: https://img.shields.io/pypi/wheel/quantdom.svg?style=flat-square
-..     :target: https://pypi.python.org/pypi/quantdom/
-.. .. image:: https://img.shields.io/pypi/pyversions/quantdom.svg?style=flat-square
-..     :target: https://pypi.python.org/pypi/quantdom/
-.. .. image:: https://img.shields.io/pypi/l/quantdom.svg?style=flat-square
-..     :target: https://pypi.python.org/pypi/quantdom/
-
 This is a simple and powerful
 currency analysis utility written in python,
 that strives to let you focus on digital options strategies,
@@ -23,8 +14,6 @@ with minimal effort.
 It's designed for people who are already comfortable
 with Options strategies 
 and who want to analyse their own trading strategies.
-
-
 
 
 Features
@@ -44,49 +33,6 @@ Features
 * In-depth currency Analysis: % Change vs Days around Elections from 2000-2016
 * Charting and reporting that help visualize past results
 * Correct and Accurate Results with 6 digit precision
-
-.. Requirements
-.. ------------
-
-.. * Python **3.6** or higher
-.. * `PyQt5 <https://pypi.python.org/pypi/PyQt5>`_
-.. * `PyQtGraph <http://www.pyqtgraph.org/>`_
-.. * `NumPy <http://www.numpy.org/>`_
-.. * See `pyproject.toml <https://github.com/constverum/Quantdom/blob/master/pyproject.toml#L43-L50>`_ for full details.
-
-
-.. Installation
-.. ------------
-
-.. Using the binaries
-.. ##################
-
-.. You can download binary packages for your system (see the `Github Releases <https://github.com/constverum/Quantdom/releases>`_ page for available downloads):
-
-.. * For `Windows  <https://github.com/constverum/Quantdom/releases/download/v0.1/quantdom_0.1.exe>`_
-.. * For `MacOS  <https://github.com/constverum/Quantdom/releases/download/v0.1/quantdom_0.1.dmg>`_
-.. * For `Linux  <https://github.com/constverum/Quantdom/releases/download/v0.1/quantdom_0.1.zip>`_
-
-.. Running from source code
-.. ########################
-
-.. You can install last *stable release* from pypi:
-
-.. .. code-block:: bash
-
-..     $ pip install quantdom
-
-.. And latest *development version* can be installed directly from GitHub:
-
-.. .. code-block:: bash
-
-..     $ pip install -U git+https://github.com/constverum/Quantdom.git
-
-.. After that, to run the application just execute one command:
-
-.. .. code-block:: bash
-
-..     $ quantdom
 
 
 Usage
@@ -138,82 +84,6 @@ different USD valuations can behave when facing different election-year situatio
 The tool gives investors an opportunity to make more Accurate bets on the FX market through 
 it's Data-Analytical Algorithms.
 
-.. .. code-block:: python
-
-..     from quantdom import AbstractStrategy, Order, Portfolio
-
-..     class ThreeBarStrategy(AbstractStrategy):
-
-..         def init(self, high_bars=3, low_bars=3):
-..             Portfolio.initial_balance = 100000  # default value
-..             self.seq_low_bars = 0
-..             self.seq_high_bars = 0
-..             self.signal = None
-..             self.last_position = None
-..             self.volume = 100  # shares
-..             self.high_bars = high_bars
-..             self.low_bars = low_bars
-
-..         def handle(self, quote):
-..             if self.signal:
-..                 props = {
-..                     'symbol': self.symbol,  # current selected symbol
-..                     'otype': self.signal,
-..                     'price': quote.open,
-..                     'volume': self.volume,
-..                     'time': quote.time,
-..                 }
-..                 if not self.last_position:
-..                     self.last_position = Order.open(**props)
-..                 elif self.last_position.type != self.signal:
-..                     Order.close(self.last_position, price=quote.open, time=quote.time)
-..                     self.last_position = Order.open(**props)
-..                 self.signal = False
-..                 self.seq_high_bars = self.seq_low_bars = 0
-
-..             if quote.close > quote.open:
-..                 self.seq_high_bars += 1
-..                 self.seq_low_bars = 0
-..             else:
-..                 self.seq_high_bars = 0
-..                 self.seq_low_bars += 1
-
-..             if self.seq_high_bars == self.high_bars:
-..                 self.signal = Order.BUY
-..             elif self.seq_low_bars == self.low_bars:
-..                 self.signal = Order.SELL
-
-
-.. Documentation
-.. -------------
-
-.. In progress ;)
-
-
-.. TODO
-.. ----
-
-.. * Add integration with `TA-Lib <http://ta-lib.org/>`_
-.. * Add the ability to use TensorFlow/CatBoost/Scikit-Learn and other ML tools to create incredible algorithms and strategies. Just as one of the first tasks is Elliott Wave Theory(Principle) - to recognize of current wave and on the basis of this predict price movement at confidence intervals
-.. * Add the ability to make a sentiment analysis from different sources (news, tweets, etc)
-.. * Add ability to create custom screens, ranking functions, reports
-
-
-.. Contributing
-.. ------------
-
-.. * Fork it: https://github.com/constverum/Quantdom/fork
-.. * Create your feature branch: git checkout -b my-new-feature
-.. * Commit your changes: git commit -am 'Add some feature'
-.. * Push to the branch: git push origin my-new-feature
-.. * Submit a pull request!
-
-
-.. Disclaimer
-.. ----------
-
-.. This software should not be used as a financial advisor, it is for educational use only.
-.. Absolutely no warranty is implied with this product. By using this software you release the author(s) from any liability regarding the use of this software. You can lose money because this program probably has some errors in it, so use it at your own risk. And please don't take risks with money you can't afford to lose.
 
 
 Feedback
@@ -222,8 +92,3 @@ Feedback
 I'm very interested in your experience with this tool.
 Please feel free to send me any feedback, ideas, enhancement requests or anything else.
 
-
-.. License
-.. -------
-
-.. Licensed under the Apache License, Version 2.0
