@@ -107,8 +107,76 @@ for date in election_dates:
 
 
 buffer = 160
+
+# ccy1 = "USD"
+# ccy2 = "AUD"
+# optiontype = "American"
+# strike = "0.2"
+# expiry = "3"
+
+
 def traded_plot(ccy):
-    
+
+    if ccy is None:
+        ccy = "USD"
+        x_val = [0] * 160
+        y_val = [0] * 160
+        data1 = go.Scatter(
+            x = x_val,
+            y = y_val,
+            mode = 'lines',
+            name = '2000',
+            line = dict(color=('rgb(255,0,0)'))
+        )
+        
+        data2 = go.Scatter(
+                x = x_val,
+                y = y_val,
+                mode = 'lines',
+                name = '2004',
+                line = dict(color=('rgb(36,173,233)'))
+        )
+        
+        data3 = go.Scatter(
+                x = x_val,
+                y = y_val,
+                mode = 'lines',
+                name = '2008',
+                line = dict(color=('rgb(0,120,0)'))
+        )
+        
+        data4 = go.Scatter(
+                x = x_val,
+                y = y_val,
+                mode = 'lines',
+                name = '2012',
+                line = dict(color=('rgb(255,128,0)'))
+        )
+        
+        data5 = go.Scatter(
+                x = x_val,
+                y = y_val,
+                mode = 'lines',
+                name = '2016',
+                line = dict(color=('rgb(0,0,255)'))
+        )
+        
+        data = [data1,data2,data3,data4,data5]
+        
+        ccy = 'USD - '+ccy
+        title = 'Currency Pair - {} - % Change'.format(ccy)
+        
+        return {
+            'data':data,
+            'layout':go.Layout(
+            xaxis = {'title':'Days around Election'},
+            yaxis = {'title':'% Change'},
+            title = title,
+            ),
+        }
+
+
+
     x_val = []
     for i in range(-buffer,buffer+1):
         x_val.append(i)
@@ -177,9 +245,44 @@ def traded_plot(ccy):
 # traded_plot("CHF")
 
 def options_plot(strike,timespan,optiontype,ccy,year):
-    strike = float(strike)
-    timespan = int(timespan)
-    x_range = timespan*30
+    if strike is None:
+        x_val = [0] * 160
+        y_val = [0] * 160
+        required_color = dict(color=('rgb(255,0,0)'))
+        year = "Year"
+        optiontype = "Option type"
+        data1 = go.Scatter(
+            x = x_val,
+            y = y_val,
+            mode = 'lines',
+            name = '{}'.format(year),
+            line = required_color
+        )
+        data = [data1]
+    #     print(data)
+        title = 'Digital Option - {} - {}'.format(optiontype,(year[:4]))
+
+        return {
+            'data':data,
+            'layout':go.Layout(
+            xaxis = {'title':'Days around Election'},
+            yaxis = {'title':'Trade Worked or Not'},
+            title = title,
+            ),
+        }
+
+
+    try:
+        strike = float(strike)
+        timespan = int(timespan)
+    except:
+        pass
+    
+    try:
+        x_range = timespan*30
+    except:
+        pass
+
     european_plot = {}
     american_plot = {}
     
@@ -381,7 +484,7 @@ app.layout = html.Div(
         html.Div([
             html.Label('Strike in % :',style={'margin-right': '4.5em'}),
             dcc.Input(id='strike',
-                placeholder = 'Enter Strike',
+                placeholder = 'Eg. 0.6',
                 className = "textbox",
                 style=dict(
                     width=195,
@@ -396,7 +499,7 @@ app.layout = html.Div(
         html.Div([
             html.Label('Expiry in Months :',style={'margin-right': '2em'}),
             dcc.Input(id='expiry',
-                placeholder = 'Enter Expiry 1, 2, 3 ...',
+                placeholder = '1,2 or 3',
                 className = "textbox",
                 style=dict(
                     width=195,
