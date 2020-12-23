@@ -118,7 +118,7 @@ buffer = 160
 def traded_plot(ccy):
 
     if ccy is None:
-        ccy = "USD"
+        ccy = "CCY2"
         x_val = [0] * 160
         y_val = [0] * 160
         data1 = go.Scatter(
@@ -364,6 +364,8 @@ def options_plot(strike,timespan,optiontype,ccy,year):
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app.title = 'Forex Analysis'
+
 server = app.server
 
 colors = {
